@@ -1,0 +1,28 @@
+FROM node:latest
+
+
+RUN apt-get update \
+  && apt-get install -y git unzip \
+  && yarn global add ionic cordova \
+  && apt-get clean -y \
+  && apt-get autoclean -y \
+  && apt-get autoremove -y \
+  && rm -rf /usr/share/locale/* \
+  && rm -rf /var/cache/debconf/*-old \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /usr/share/doc/*
+
+CMD ["bash"]
+
+#Step 1
+#docker build -t ioniccontainer .
+
+#use -p [internalport:externalport]
+#example: 
+#-p 8080:80
+
+#Step 2
+#docker run -t -i -p 80:80 ioniccontainer /bin/bash
+
+
+
